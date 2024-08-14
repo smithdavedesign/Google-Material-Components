@@ -1,29 +1,25 @@
-function getStyleUse(bundleFilename) {
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+function getStyleUse(outputFilename) {
   return [
-    {
-      loader: 'file-loader',
-      options: {
-        name: bundleFilename,
-      },
-    },
-    { loader: 'extract-loader' },
-    { loader: 'css-loader' },
+    MiniCssExtractPlugin.loader,
+    'css-loader',
     {
       loader: 'sass-loader',
       options: {
-        includePaths: ['./node_modules'],
-        implementation: require('dart-sass'),
-        fiber: require('fibers'),
-  }
-    },
+        implementation: require('sass')
+      }
+    }
   ];
 }
 
 module.exports = [
   {
+    mode: 'development',
     entry: './login.scss',
     output: {
-      // This is necessary for webpack to compile, but we never reference this js file.
       filename: 'style-bundle-login.js',
     },
     module: {
@@ -32,11 +28,21 @@ module.exports = [
         use: getStyleUse('bundle-login.css')
       }]
     },
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: 'bundle-login.css'
+      }),
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        filename: 'login.html',
+        chunks: ['bundle-login']
+      })
+    ]
   },
   {
+    mode: 'development',
     entry: './home.scss',
     output: {
-      // This is necessary for webpack to compile, but we never reference this js file.
       filename: 'style-bundle-home.js',
     },
     module: {
@@ -45,31 +51,67 @@ module.exports = [
         use: getStyleUse('bundle-home.css')
       }]
     },
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: 'bundle-home.css'
+      }),
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        filename: 'home.html',
+        chunks: ['bundle-home']
+      })
+    ]
   },
   {
+    mode: 'development',
     entry: "./login.js",
     output: {
       filename: "bundle-login.js"
     },
     module: {
-      loaders: [{
-        test: /login.js$/,
-        loader: 'babel-loader',
-        query: {presets: ['env']}
+      rules: [{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       }]
     },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        filename: 'login.html',
+        chunks: ['bundle-login']
+      })
+    ]
   },
   {
+    mode: 'development',
     entry: "./home.js",
     output: {
       filename: "bundle-home.js"
     },
     module: {
-      loaders: [{
-        test: /home.js$/,
-        loader: 'babel-loader',
-        query: {presets: ['env']}
+      rules: [{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       }]
     },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        filename: 'home.html',
+        chunks: ['bundle-home']
+      })
+    ]
   }
 ];
