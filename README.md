@@ -11,14 +11,10 @@ Components for the Web (MDC Web). [MDC-101](https://codelabs.developers.google.c
 [MDC-111](https://codelabs.developers.google.com/codelabs/mdc-111-web/) demonstrates incorporating MDC Web into an existing application.
 [MDC-112](https://codelabs.developers.google.com/codelabs/mdc-112-web/) guides you through integrating MDC Web with other web frameworks.
 
-## Support
+## 101 
 
-If you've found an error in these Codelabs, please file an issue on [GitHub](https://github.com/material-components/material-components-web-codelabs/issues).
+<img width="537" alt="Screenshot 2024-08-14 at 11 29 20 AM" src="https://github.com/user-attachments/assets/a2748596-aeb4-41cd-bac2-1d1b200987f5">
 
-For questions regarding Material Components for the Web, please file an issue [here](https://github.com/material-components/material-components-web/issues).
-
-Patches are encouraged, and may be submitted by forking this project and
-submitting a pull request through GitHub.
 
 ## License
 
