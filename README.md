@@ -13,7 +13,7 @@ Components for the Web (MDC Web). [MDC-101](https://codelabs.developers.google.c
 
 ## 101 
 
-<img width="537" alt="Screenshot 2024-08-14 at 11 29 20 AM" src="https://github.com/user-attachments/assets/a2748596-aeb4-41cd-bac2-1d1b200987f5">
+<img width="647" alt="Screenshot 2024-08-14 at 1 19 36 PM" src="https://github.com/user-attachments/assets/503c15c5-37a0-48be-a7de-5eb31ad685c9">
 
 
 ## License
